@@ -13,4 +13,5 @@ export const Table = {
   data: small_film_set,
   gravity: 5,
   minWidth: 700,
+  id: "moviesTable",
 };

@@ -11,10 +11,30 @@ export const Form = {
   },
   elements: [
     { template: "Edit Films", type: "section" },
-    { view: "text", label: "Title", name: "title", invalidMessage: "Add some title!" },
-    { view: "text", label: "Year", name: "year", invalidMessage: "1970 - Current year" },
-    { view: "text", label: "Rating", name: "rating", invalidMessage: "What is its rating?" },
-    { view: "text", label: "Votes", name: "votes", invalidMessage: "0 - 100000" },
+    {
+      view: "text",
+      label: "Title",
+      name: "title",
+      invalidMessage: "Add some title!",
+    },
+    {
+      view: "text",
+      label: "Year",
+      name: "year",
+      invalidMessage: "1970 - Current year",
+    },
+    {
+      view: "text",
+      label: "Rating",
+      name: "rating",
+      invalidMessage: "What is its rating?",
+    },
+    {
+      view: "text",
+      label: "Votes",
+      name: "votes",
+      invalidMessage: "0 - 100000",
+    },
     { maxHeight: 15 },
     {
       margin: 15,
@@ -28,9 +48,8 @@ export const Form = {
               const newEntry = $$("moviesForm").getValues();
               $$("moviesTable").add(newEntry);
               $$("moviesForm").clear();
-				  webix.message(`Movie ${newEntry.title} successfully added`);
+              webix.message(`Movie ${newEntry.title} successfully added`);
             }
-            console.log();
           },
         },
         {
