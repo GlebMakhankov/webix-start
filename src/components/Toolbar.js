@@ -1,3 +1,5 @@
+import { Popup } from "./Popup";
+
 export const Toolbar = {
   view: "toolbar",
   margin: 10,
@@ -13,6 +15,8 @@ export const Toolbar = {
       type: "icon",
       icon: "wxi-user",
       css: "webix_transparent",
+      id: "profileBtn",
+      popup: "profilePopupList",
     },
   ],
 };
