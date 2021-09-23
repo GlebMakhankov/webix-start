@@ -6,8 +6,9 @@ export const Form = {
   rules: {
     title: webix.rules.isNotEmpty,
     year: (value) => value >= 1970 && value <= new Date().getFullYear(),
-    votes: (value) => value && value < 100000,
-    rating: (value) => webix.rules.isNotEmpty && value,
+    votes: (value) =>
+      value >= 0 && value <= 100000 && Object.is(Math.abs(value), -0),
+    rating: (value) => webix.rules.isNotEmpty && +value,
   },
   elements: [
     { template: "Edit Films", type: "section" },
