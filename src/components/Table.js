@@ -12,5 +12,6 @@ export const Table = {
   autoConfig: true,
   data: small_film_set,
   gravity: 5,
-  minWidth: 700,
+  minWidth: 300,
+  id: 'moviesTable',
 };
