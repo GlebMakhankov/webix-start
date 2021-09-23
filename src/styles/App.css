@@ -1,0 +1,18 @@
+.webix_toolbar.myToolbar {
+  background: #657584;
+}
+.webix_toolbar.myToolbar .webix_el_label .webix_el_box,
+.webix_toolbar.myToolbar .webix_scroll_cont * {
+  color: #fff;
+}
+.footer {
+  text-align: center;
+}
+.webix_list.list {
+  background: #eee;
+}
+.connected .webix_template {
+  color: green;
+  text-align: center;
+  background: #eee;
+}
