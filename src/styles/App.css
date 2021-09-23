@@ -1,0 +1,15 @@
+.webix_toolbar * {
+  color: #fff !important;
+}
+.footer {
+  text-align: center;
+}
+.list {
+  background: #eee !important;
+  scrollbar-width: none;
+}
+[view_id="$layout3"] .webix_img_btn {
+  color: green !important;
+  background: #eee !important;
+  border: none !important;
+}
