@@ -1,15 +1,18 @@
-.webix_toolbar * {
-  color: #fff !important;
+.webix_toolbar.myToolbar {
+  background: #657584;
+}
+.webix_toolbar.myToolbar .webix_el_label .webix_el_box,
+.webix_toolbar.myToolbar .webix_scroll_cont * {
+  color: #fff;
 }
 .footer {
   text-align: center;
 }
-.list {
-  background: #eee !important;
-  scrollbar-width: none;
+.webix_list.list {
+  background: #eee;
 }
-[view_id="$layout3"] .webix_img_btn {
-  color: green !important;
-  background: #eee !important;
-  border: none !important;
+.connected .webix_template {
+  color: green;
+  text-align: center;
+  background: #eee;
 }
