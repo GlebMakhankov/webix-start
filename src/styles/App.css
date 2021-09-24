@@ -2,7 +2,8 @@
   background: #657584;
 }
 .webix_toolbar.myToolbar .webix_el_label .webix_el_box,
-.webix_toolbar.myToolbar .webix_scroll_cont * {
+.webix_toolbar.myToolbar .webix_scroll_cont button span,
+.webix_toolbar.myToolbar .webix_scroll_cont button {
   color: #fff;
 }
 .footer {
