@@ -5,7 +5,6 @@ export const Popup = webix.ui({
   body: {
     view: "list",
     autoheight: true,
-    autowidth: true,
     data: ["Settings", "Log out"],
     click: () => $$("profilePopupList").hide(),
   },
