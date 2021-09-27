@@ -16,8 +16,14 @@ export const UsersList = {
       url: "http://localhost:3000/src/data/users.js",
       onClick: {
         deleteUser: (e, id) => {
-          $$("list_users").remove(id);
-          return false;
+          webix
+            .confirm({
+              title: "Delete entry?",
+              text: "Are you sure about that?",
+            })
+            .then(() => {
+              $$("list_users").remove(id);
+            });
         },
       },
     },

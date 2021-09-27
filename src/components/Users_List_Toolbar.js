@@ -10,7 +10,7 @@ export const UsersListToolbar = {
         onTimedKeyPress: () => {
           const value = $$("usersSearchInput").getValue().toLowerCase();
           $$("list_users").filter((obj) =>
-            `${obj.name}${obj.country}`.toLowerCase().includes(value)
+            obj.name.toLowerCase().includes(value)
           );
         },
       },

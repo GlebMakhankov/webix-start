@@ -50,10 +50,7 @@ export const DashboardMoviesForm = {
             const table = $$("moviesTable");
             if (form.validate()) {
               const entry = form.getValues();
-              let exists = false;
-              table.data.each((obj) => {
-                if (obj.id === entry.id) return (exists = true);
-              });
+              let exists = table.getItem(entry.id);
               if (!exists) {
                 table.add(entry);
                 webix.message(

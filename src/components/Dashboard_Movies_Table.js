@@ -48,8 +48,15 @@ export const DashboardMoviesTable = {
   },
   onClick: {
     deleteEntry: (e, id) => {
-      $$("moviesTable").remove(id);
-      return false;
+      webix
+        .confirm({
+          title: "Delete entry?",
+          text: "Are you sure about that?",
+        })
+        .then(() => {
+          $$("moviesTable").remove(id);
+          return false;
+        });
     },
   },
 };
