@@ -42,7 +42,7 @@ export const DashboardMoviesForm = {
       cols: [
         {
           view: "button",
-          value: "Add New",
+          value: "Save",
           id: "addMovieBtn",
           css: "webix_primary",
           click: () => {
@@ -50,8 +50,7 @@ export const DashboardMoviesForm = {
             const table = $$("moviesTable");
             if (form.validate()) {
               const entry = form.getValues();
-              let exists = table.getItem(entry.id);
-              if (!exists) {
+              if (!table.exists(entry.id)) {
                 table.add(entry);
                 webix.message(
                   `Movie <strong>${entry.title}</strong> was successfully added`
@@ -63,7 +62,6 @@ export const DashboardMoviesForm = {
                 );
               }
               form.clear();
-              $$("addMovieBtn").setValue("Add New");
             }
           },
         },

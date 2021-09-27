@@ -45,7 +45,6 @@ export const DashboardMoviesTable = {
       const form = $$("moviesForm");
       form.clearValidation();
       form.setValues($$("moviesTable").getItem(id));
-      $$("addMovieBtn").setValue("Update");
     },
   },
   onClick: {

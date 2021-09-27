@@ -2,7 +2,6 @@ export const ProductsTreetable = {
   view: "treetable",
   id: "productsTreetable",
   tooltip: true,
-  scroll: "auto",
   select: "cell",
   columns: [
     { id: "id", header: "", width: 50 },
