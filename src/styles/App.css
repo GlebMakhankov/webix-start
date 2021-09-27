@@ -1,9 +1,9 @@
-.webix_toolbar.myToolbar {
+.webix_toolbar.myHeader {
   background: #657584;
 }
-.webix_toolbar.myToolbar .webix_el_label .webix_el_box,
-.webix_toolbar.myToolbar .webix_scroll_cont button span,
-.webix_toolbar.myToolbar .webix_scroll_cont button {
+.webix_toolbar.myHeader .webix_el_label .webix_el_box,
+.webix_toolbar.myHeader .webix_scroll_cont button span,
+.webix_toolbar.myHeader .webix_scroll_cont button {
   color: #fff;
 }
 .footer {
@@ -16,4 +16,19 @@
   color: green;
   text-align: center;
   background: #eee;
+}
+
+.movieTableRowHover.webix_cell {
+  background: #1ca1c1;
+  color: #fff;
+}
+.rank {
+  background: #f4f5f9;
+}
+.deleteUser {
+  float: right;
+}
+.highlightedUser {
+  background: #1ca0c17a;
+  color: #fff;
 }

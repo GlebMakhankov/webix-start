@@ -1,6 +1,7 @@
-export const Form = {
+export const DashboardMoviesForm = {
   view: "form",
-  gravity: 2,
+  gravity: 1,
+  maxWidth: 400,
   margin: 10,
   id: "moviesForm",
   rules: {
@@ -41,14 +42,26 @@ export const Form = {
       cols: [
         {
           view: "button",
-          value: "Add New",
+          value: "Save",
+          id: "addMovieBtn",
           css: "webix_primary",
           click: () => {
-            if ($$("moviesForm").validate()) {
-              const newEntry = $$("moviesForm").getValues();
-              $$("moviesTable").add(newEntry);
-              $$("moviesForm").clear();
-              webix.message(`Movie ${newEntry.title} successfully added`);
+            const form = $$("moviesForm");
+            const table = $$("moviesTable");
+            if (form.validate()) {
+              const entry = form.getValues();
+              if (!table.exists(entry.id)) {
+                table.add(entry);
+                webix.message(
+                  `Movie <strong>${entry.title}</strong> was successfully added`
+                );
+              } else {
+                table.updateItem(entry.id, entry);
+                webix.message(
+                  `Movie <strong>${entry.title}</strong> was successfully updated`
+                );
+              }
+              form.clear();
             }
           },
         },
@@ -62,8 +75,9 @@ export const Form = {
                 text: "Do you still want to continue?",
               })
               .then(() => {
-                $$("moviesForm").clear();
-                $$("moviesForm").clearValidation();
+                const form = $$("moviesForm");
+                form.clear();
+                form.clearValidation();
               }),
         },
       ],

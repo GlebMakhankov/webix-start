@@ -1,10 +1,10 @@
-import { Popup } from "./Popup";
+import { AppHeaderPopup } from "./App_Header_Popup";
 
-export const Toolbar = {
+export const AppHeader = {
   view: "toolbar",
   margin: 10,
   padding: 10,
-  css: "myToolbar",
+  css: "myHeader",
   elements: [
     { view: "label", label: "My App", inputWidth: 100 },
     {

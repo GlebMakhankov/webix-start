@@ -1,16 +1,15 @@
-import { Toolbar } from "./components/Toolbar.js";
-import { List } from "./components/List.js";
-import { Table } from "./components/Table.js";
-import { Form } from "./components/Form.js";
-import { Footer } from "./components/Footer.js";
+import { AppHeader } from "./components/App_Header";
+import { AppSidebar } from "./components/App_Sidebar";
+import { AppMainField } from "./components/App_Main_Field";
+import { AppFooter } from "./components/App_Footer";
 
 export const App = {
   view: "layout",
   rows: [
-    Toolbar,
+    AppHeader,
     {
-      cols: [List, { view: "resizer" }, Table, Form],
+      cols: [AppSidebar, { view: "resizer" }, AppMainField],
     },
-    Footer,
+    AppFooter,
   ],
 };

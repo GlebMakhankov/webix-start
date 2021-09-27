@@ -1,4 +1,4 @@
-export const Popup = webix.ui({
+export const AppHeaderPopup = webix.ui({
   view: "window",
   id: "profilePopupList",
   head: false,
