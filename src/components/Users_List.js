@@ -1,23 +1,46 @@
 import { UsersListToolbar } from "./Users_List_Toolbar";
 
-export function highlightUser() {
-  const list = $$("list_users");
-  list.data.each((obj, index) =>
-    index < 5 ? (obj.$css = "highlightedUser") : (obj.$css = "")
-  );
-  list.refresh();
-}
+webix.protoUI(
+  {
+    name: "editlist",
+  },
+  webix.EditAbility,
+  webix.ui.list
+);
 
 export const UsersList = {
   rows: [
     UsersListToolbar,
     {
-      view: "list",
+      view: "editlist",
       id: "list_users",
+      url: "http://localhost:3000/src/data/users.js",
       template: (obj) =>
         `${obj.name} from ${obj.country} <span class='webix_icon wxi-close deleteUser'></span>`,
-      ready: () => highlightUser(),
-      url: "http://localhost:3000/src/data/users.js",
+      scheme: {
+        $change: (obj) => {
+          if (obj.age < 26) {
+            obj.$css = "notBoomer";
+          }
+        },
+      },
+      rules: {
+        name: webix.rules.isNotEmpty,
+      },
+      editable: true,
+      editor: "text",
+      editValue: "name",
+      ready: () => {
+        const chart = $$("usersChart");
+        chart.sync($$("list_users"), () =>
+          chart.group({
+            by: "country",
+            map: {
+              country: ["country", "count"],
+            },
+          })
+        );
+      },
       onClick: {
         deleteUser: (e, id) => {
           webix

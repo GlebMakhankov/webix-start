@@ -8,7 +8,7 @@ export const DashboardMoviesForm = {
     title: webix.rules.isNotEmpty,
     year: (value) => value >= 1970 && value <= new Date().getFullYear(),
     votes: (value) => value >= 0 && value <= 100000,
-    rating: (value) => webix.rules.isNotEmpty && +value,
+    rating: (value) => value,
   },
   elements: [
     { template: "Edit Films", type: "section" },
@@ -47,21 +47,15 @@ export const DashboardMoviesForm = {
           css: "webix_primary",
           click: () => {
             const form = $$("moviesForm");
-            const table = $$("moviesTable");
-            if (form.validate()) {
-              const entry = form.getValues();
-              if (!table.exists(entry.id)) {
-                table.add(entry);
-                webix.message(
-                  `Movie <strong>${entry.title}</strong> was successfully added`
-                );
-              } else {
-                table.updateItem(entry.id, entry);
-                webix.message(
-                  `Movie <strong>${entry.title}</strong> was successfully updated`
-                );
-              }
+            if (form.isDirty()) {
+              if (!form.validate()) return false;
+              form.save();
               form.clear();
+              webix.message(`<strong>Movie was successfully saved</strong>`);
+            } else {
+              form.save();
+              form.clear();
+              form.clearValidation();
             }
           },
         },
