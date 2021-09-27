@@ -42,7 +42,9 @@ export const DashboardMoviesTable = {
   select: "row",
   on: {
     onAfterSelect: (id) => {
-      $$("moviesForm").setValues($$("moviesTable").getItem(id));
+      const form = $$("moviesForm");
+      form.clearValidation();
+      form.setValues($$("moviesTable").getItem(id));
       $$("addMovieBtn").setValue("Update");
     },
   },

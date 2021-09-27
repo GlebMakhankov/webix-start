@@ -1,3 +1,5 @@
+import { highlightUser } from "./Users_List";
+
 export const UsersListToolbar = {
   view: "toolbar",
   elements: [
@@ -19,13 +21,19 @@ export const UsersListToolbar = {
       view: "button",
       value: "Sort asc",
       css: "webix_primary",
-      click: () => $$("list_users").sort("#name#", "asc"),
+      click: () => {
+			$$("list_users").sort("#name#", "asc");
+			highlightUser();
+      },
     },
     {
       view: "button",
       value: "Sort desc",
       css: "webix_primary",
-      click: () => $$("list_users").sort("#name#", "desc"),
+      click: () => {
+			$$("list_users").sort("#name#", "desc");
+			highlightUser();
+      },
     },
   ],
 };

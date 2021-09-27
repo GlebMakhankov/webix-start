@@ -3,7 +3,7 @@ export const ProductsTreetable = {
   id: "productsTreetable",
   tooltip: true,
   scroll: "auto",
-  select: true,
+  select: "cell",
   columns: [
     { id: "id", header: "", width: 50 },
     {
