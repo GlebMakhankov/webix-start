@@ -27,7 +27,9 @@ export const UsersListToolbar = {
       view: "button",
       value: "Sort desc",
       css: "webix_primary",
-      click: () => $$("list_users").sort("#name#", "desc"),
+      click: () => {
+        $$("list_users").sort("#name#", "desc");
+      },
     },
     {
       view: "button",

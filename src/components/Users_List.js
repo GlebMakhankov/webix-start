@@ -32,14 +32,15 @@ export const UsersList = {
       editValue: "name",
       ready: () => {
         const chart = $$("usersChart");
-        chart.sync($$("list_users"), () =>
+        chart.sync($$("list_users"), () => {
           chart.group({
             by: "country",
             map: {
               country: ["country", "count"],
             },
-          })
-        );
+          });
+          chart.sort("country", "desc");
+        });
       },
       onClick: {
         deleteUser: (e, id) => {

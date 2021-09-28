@@ -1,4 +1,5 @@
 import getRandomIntInclusive from "../functions/GetRandomInt";
+import RegisterFilterByYear from "../functions/RegisterFilterByYear";
 
 const categories = new webix.DataCollection({
   url: "http://localhost:3000/src/data/categories.js",
@@ -60,36 +61,10 @@ export const DashboardMoviesTable = {
   ready: () => {
     const table = $$("moviesTable");
     $$("moviesForm").bind(table);
-    table.registerFilter(
-      $$("tabbarFilterByYear"),
-      {
-        columnId: "year",
-        compare: function (value, filter, item) {
-          const currentYear = new Date().getFullYear();
-          switch (filter) {
-            case "new":
-              return value >= currentYear - 3;
-
-            case "modern":
-              return value >= currentYear - 10;
-
-            case "old":
-              return value < currentYear - 10;
-
-            default:
-              return value;
-          }
-        },
-      },
-      {
-        getValue: function (node) {
-          return node.getValue();
-        },
-        setValue: function (node, value) {
-          node.setValue(value);
-        },
-      }
-    );
+    RegisterFilterByYear(table, $$("tabbarFilterByYear"));
+  },
+  on: {
+    onAfterSelect: () => $$("moviesForm").clearValidation(),
   },
   onClick: {
     deleteEntry: (e, id) => {
