@@ -1,7 +1,7 @@
-import { DashboardView } from "./Dashboard_View";
-import { UsersView } from "./Users_View";
-import { ProductsView } from "./Products_View";
-import { AdminPanelView } from "./Admin_Panel_View";
+import { DashboardView } from "../Dashboard/Dashboard_View";
+import { UsersView } from "../Users/Users_View";
+import { ProductsView } from "../Products/Products_View";
+import { AdminPanelView } from "../Admin/Admin_Panel_View";
 
 export const AppMainField = {
   gravity: 8,

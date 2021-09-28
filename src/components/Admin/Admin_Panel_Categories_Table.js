@@ -1,4 +1,4 @@
-import Storage from "../data/Storage";
+import Storage from "../../data/Storage";
 
 export const AdminPanelCategoriesTable = {
   view: "datatable",

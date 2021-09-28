@@ -1,8 +1,7 @@
-import Storage from "../data/Storage";
+import Storage from "../../data/Storage";
 
 export const DashboardMoviesForm = {
   view: "form",
-  gravity: 1,
   maxWidth: 400,
   margin: 10,
   id: "moviesForm",
@@ -59,15 +58,12 @@ export const DashboardMoviesForm = {
             if (form.isDirty()) {
               if (!form.validate()) return false;
               form.save();
-              form.clear();
-              table.unselectAll();
               webix.message(`<strong>Movie was successfully saved</strong>`);
             } else {
-              form.clear();
-              form.clearValidation();
-              table.unselectAll();
               webix.message("Nothing was changed");
             }
+				form.clear();
+				table.unselectAll();
           },
         },
         {

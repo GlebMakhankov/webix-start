@@ -1,11 +1,8 @@
-import Storage from "../data/Storage";
+import Storage from "../../data/Storage";
 
 export const AdminPanelCategoriesForm = {
   view: "form",
   id: "adminCategoriesForm",
-  rules: {
-    value: webix.rules.isNotEmpty,
-  },
   elements: [
     {
       cols: [
@@ -20,4 +17,7 @@ export const AdminPanelCategoriesForm = {
       ],
     },
   ],
+  rules: {
+    value: webix.rules.isNotEmpty,
+  },
 };

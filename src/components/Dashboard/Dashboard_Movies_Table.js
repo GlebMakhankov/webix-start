@@ -1,10 +1,9 @@
-import getRandomIntInclusive from "../functions/GetRandomInt";
-import RegisterFilterByYear from "../functions/RegisterFilterByYear";
-import Storage from "../data/Storage";
+import getRandomIntInclusive from "../../functions/GetRandomInt";
+import RegisterFilterByYear from "../../functions/RegisterFilterByYear";
+import Storage from "../../data/Storage";
 
 export const DashboardMoviesTable = {
   view: "datatable",
-  gravity: 1,
   minWidth: 700,
   id: "moviesTable",
   url: "http://localhost:3000/src/data/data.js",
