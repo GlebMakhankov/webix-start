@@ -1,9 +1,6 @@
 import getRandomIntInclusive from "../functions/GetRandomInt";
 import RegisterFilterByYear from "../functions/RegisterFilterByYear";
-
-const categories = new webix.DataCollection({
-  url: "http://localhost:3000/src/data/categories.js",
-});
+import Storage from "../data/Storage";
 
 export const DashboardMoviesTable = {
   view: "datatable",
@@ -23,7 +20,7 @@ export const DashboardMoviesTable = {
     },
     {
       id: "categoryId",
-      collection: categories,
+      collection: Storage.categories,
       header: ["Category", { content: "selectFilter" }],
       width: 120,
     },

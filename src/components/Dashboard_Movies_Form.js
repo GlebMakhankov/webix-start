@@ -1,3 +1,5 @@
+import Storage from "../data/Storage";
+
 export const DashboardMoviesForm = {
   view: "form",
   gravity: 1,
@@ -35,6 +37,12 @@ export const DashboardMoviesForm = {
       label: "Votes",
       name: "votes",
       invalidMessage: "0 - 100000",
+    },
+    {
+      view: "richselect",
+		name: "categoryId",
+      label: "Choose",
+      options: Storage.categories,
     },
     { maxHeight: 15 },
     {
