@@ -1,15 +1,16 @@
 export const UsersChart = {
   view: "chart",
+  id: "usersChart",
   type: "bar",
-  value: "#age#",
+  value: "#country#",
   barWidth: 30,
   radius: 0,
   tooltip: {
-    template: "#age#",
+    template: "#value#",
   },
   xAxis: {
-    template: "#age#",
-    title: "Age",
+    template: (obj) => obj.value,
+    title: "Country",
   },
-  url: "http://localhost:3000/src/data/users.js",
+  yAxis: {},
 };

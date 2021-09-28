@@ -28,7 +28,6 @@
 .deleteUser {
   float: right;
 }
-.highlightedUser {
-  background: #1ca0c17a;
-  color: #fff;
+.notBoomer {
+  background: #feffd4;
 }

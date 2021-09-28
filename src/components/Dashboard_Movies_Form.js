@@ -48,20 +48,17 @@ export const DashboardMoviesForm = {
           click: () => {
             const form = $$("moviesForm");
             const table = $$("moviesTable");
-            if (form.validate()) {
-              const entry = form.getValues();
-              if (!table.exists(entry.id)) {
-                table.add(entry);
-                webix.message(
-                  `Movie <strong>${entry.title}</strong> was successfully added`
-                );
-              } else {
-                table.updateItem(entry.id, entry);
-                webix.message(
-                  `Movie <strong>${entry.title}</strong> was successfully updated`
-                );
-              }
+            if (form.isDirty()) {
+              if (!form.validate()) return false;
+              form.save();
               form.clear();
+              table.unselectAll();
+              webix.message(`<strong>Movie was successfully saved</strong>`);
+            } else {
+              form.clear();
+              form.clearValidation();
+              table.unselectAll();
+              webix.message("Nothing was changed");
             }
           },
         },

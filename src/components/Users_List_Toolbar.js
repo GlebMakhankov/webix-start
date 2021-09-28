@@ -1,4 +1,4 @@
-import { highlightUser } from "./Users_List";
+import getRandomUser from "../functions/GetRandomUser";
 
 export const UsersListToolbar = {
   view: "toolbar",
@@ -21,19 +21,21 @@ export const UsersListToolbar = {
       view: "button",
       value: "Sort asc",
       css: "webix_primary",
-      click: () => {
-			$$("list_users").sort("#name#", "asc");
-			highlightUser();
-      },
+      click: () => $$("list_users").sort("#name#", "asc"),
     },
     {
       view: "button",
       value: "Sort desc",
       css: "webix_primary",
       click: () => {
-			$$("list_users").sort("#name#", "desc");
-			highlightUser();
+        $$("list_users").sort("#name#", "desc");
       },
+    },
+    {
+      view: "button",
+      value: "Add new",
+      css: "webix_primary",
+      click: () => $$("list_users").add(getRandomUser()),
     },
   ],
 };

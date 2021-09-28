@@ -1,5 +1,18 @@
+import getRandomIntInclusive from "../functions/GetRandomInt";
+import RegisterFilterByYear from "../functions/RegisterFilterByYear";
+
+const categories = new webix.DataCollection({
+  url: "http://localhost:3000/src/data/categories.js",
+});
+
 export const DashboardMoviesTable = {
   view: "datatable",
+  gravity: 1,
+  minWidth: 700,
+  id: "moviesTable",
+  url: "http://localhost:3000/src/data/data.js",
+  hover: "movieTableRowHover",
+  select: "row",
   columns: [
     { id: "rank", header: "", width: 30, sort: "text", css: "rank" },
     {
@@ -9,9 +22,15 @@ export const DashboardMoviesTable = {
       sort: "text",
     },
     {
+      id: "categoryId",
+      collection: categories,
+      header: ["Category", { content: "selectFilter" }],
+      width: 120,
+    },
+    {
       id: "year",
-      header: ["Released", { content: "textFilter" }],
-      template: "at #year#",
+      header: "Year",
+      template: "#year#",
       width: 120,
       sort: "text",
     },
@@ -34,18 +53,18 @@ export const DashboardMoviesTable = {
       sort: "text",
     },
   ],
-  url: "http://localhost:3000/src/data/data.js",
-  gravity: 1,
-  minWidth: 700,
-  hover: "movieTableRowHover",
-  id: "moviesTable",
-  select: "row",
-  on: {
-    onAfterSelect: (id) => {
-      const form = $$("moviesForm");
-      form.clearValidation();
-      form.setValues($$("moviesTable").getItem(id));
+  scheme: {
+    $init: (obj) => {
+      obj.categoryId = getRandomIntInclusive(1, 4);
     },
+  },
+  ready: () => {
+    const table = $$("moviesTable");
+    $$("moviesForm").bind(table);
+    RegisterFilterByYear(table, $$("tabbarFilterByYear"));
+  },
+  on: {
+    onAfterSelect: () => $$("moviesForm").clearValidation(),
   },
   onClick: {
     deleteEntry: (e, id) => {
