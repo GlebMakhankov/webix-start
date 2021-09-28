@@ -16,7 +16,7 @@ export const UsersList = {
       id: "list_users",
       url: "http://localhost:3000/src/data/users.js",
       template: (obj) =>
-        `${obj.name} from ${obj.country} <span class='webix_icon wxi-close deleteUser'></span>`,
+        `${obj.name}, ${obj.age}, from ${obj.country} <span class='webix_icon wxi-close deleteUser'></span>`,
       scheme: {
         $change: (obj) => {
           if (obj.age < 26) {

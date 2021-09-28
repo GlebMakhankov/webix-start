@@ -28,8 +28,8 @@ export const DashboardMoviesTable = {
     },
     {
       id: "year",
-      header: ["Released", { content: "textFilter" }],
-      template: "at #year#",
+      header: "Year",
+      template: "#year#",
       width: 120,
       sort: "text",
     },
