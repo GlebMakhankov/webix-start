@@ -60,7 +60,10 @@ export const DashboardMoviesTable = {
     RegisterFilterByYear(table, $$("tabbarFilterByYear"));
   },
   on: {
-    onAfterSelect: () => $$("moviesForm").clearValidation(),
+    onAfterSelect: (id) => {
+      console.log($$("moviesTable").getItem(id));
+      $$("moviesForm").clearValidation();
+    },
   },
   onClick: {
     deleteEntry: (e, id) => {
@@ -71,7 +74,7 @@ export const DashboardMoviesTable = {
         })
         .then(() => {
           $$("moviesTable").remove(id);
-          return false;
+          $$("moviesForm").clearValidation();
         });
     },
   },

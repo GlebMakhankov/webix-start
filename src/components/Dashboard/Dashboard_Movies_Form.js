@@ -39,7 +39,8 @@ export const DashboardMoviesForm = {
     },
     {
       view: "richselect",
-		name: "categoryId",
+      id: "richSelectCategories",
+      name: "categoryId",
       label: "Choose",
       options: Storage.categories,
     },
@@ -62,8 +63,8 @@ export const DashboardMoviesForm = {
             } else {
               webix.message("Nothing was changed");
             }
-				form.clear();
-				table.unselectAll();
+            form.clear();
+            table.unselectAll();
           },
         },
         {
@@ -79,6 +80,7 @@ export const DashboardMoviesForm = {
                 const form = $$("moviesForm");
                 form.clear();
                 form.clearValidation();
+                $$("moviesTable").unselectAll();
               }),
         },
       ],

@@ -1,4 +1,5 @@
 import Storage from "../../data/Storage";
+import getRandomIntInclusive from "../../functions/GetRandomInt";
 
 export const AdminPanelCategoriesTable = {
   view: "datatable",
@@ -7,7 +8,15 @@ export const AdminPanelCategoriesTable = {
   editable: true,
   editaction: "dblclick",
   columns: [
-    { id: "id", header: "", width: 30, sort: "text" },
+    {
+      id: "id",
+      header: "",
+      template: (obj, a, id, c, index) => {
+        return index + 1;
+      },
+      width: 30,
+      sort: "text",
+    },
     {
       id: "value",
       header: "Category",
@@ -23,6 +32,8 @@ export const AdminPanelCategoriesTable = {
   ],
   onClick: {
     deleteCategory: (e, id) => {
+      if (Storage.categories.count() < 2)
+        return webix.message(`You can not delete last category!`);
       webix
         .confirm({
           title: "Delete category?",
@@ -30,7 +41,14 @@ export const AdminPanelCategoriesTable = {
         })
         .then(() => {
           Storage.categories.remove(id);
-          return false;
+          $$("moviesTable").data.each((obj) => {
+            if (obj.categoryId == id) {
+              obj.categoryId = getRandomIntInclusive(
+                1,
+                Storage.categories.count()
+              );
+            }
+          });
         });
     },
   },
