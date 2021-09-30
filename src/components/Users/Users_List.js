@@ -14,7 +14,6 @@ export const UsersList = {
     {
       view: "editlist",
       id: "list_users",
-      url: "http://localhost:3000/src/data/users.js",
       template: (obj) =>
         `${obj.name}, ${obj.age}, from ${obj.country} <span class='webix_icon wxi-close deleteUser'></span>`,
       scheme: {
@@ -30,18 +29,6 @@ export const UsersList = {
       editable: true,
       editor: "text",
       editValue: "name",
-      ready: () => {
-        const chart = $$("usersChart");
-        chart.sync($$("list_users"), () => {
-          chart.group({
-            by: "country",
-            map: {
-              country: ["country", "count"],
-            },
-          });
-          chart.sort("country", "desc");
-        });
-      },
       onClick: {
         deleteUser: (e, id) => {
           webix

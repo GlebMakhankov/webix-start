@@ -1,13 +1,9 @@
-import getRandomIntInclusive from "../functions/GetRandomInt";
-import RegisterFilterByYear from "../functions/RegisterFilterByYear";
-
-const categories = new webix.DataCollection({
-  url: "http://localhost:3000/src/data/categories.js",
-});
+import getRandomIntInclusive from "../../functions/GetRandomInt";
+import RegisterFilterByYear from "../../functions/RegisterFilterByYear";
+import Storage from "../../data/Storage";
 
 export const DashboardMoviesTable = {
   view: "datatable",
-  gravity: 1,
   minWidth: 700,
   id: "moviesTable",
   url: "http://localhost:3000/src/data/data.js",
@@ -23,7 +19,7 @@ export const DashboardMoviesTable = {
     },
     {
       id: "categoryId",
-      collection: categories,
+      collection: Storage.categories,
       header: ["Category", { content: "selectFilter" }],
       width: 120,
     },
@@ -64,7 +60,10 @@ export const DashboardMoviesTable = {
     RegisterFilterByYear(table, $$("tabbarFilterByYear"));
   },
   on: {
-    onAfterSelect: () => $$("moviesForm").clearValidation(),
+    onAfterSelect: (id) => {
+      console.log($$("moviesTable").getItem(id));
+      $$("moviesForm").clearValidation();
+    },
   },
   onClick: {
     deleteEntry: (e, id) => {
@@ -75,7 +74,7 @@ export const DashboardMoviesTable = {
         })
         .then(() => {
           $$("moviesTable").remove(id);
-          return false;
+          $$("moviesForm").clearValidation();
         });
     },
   },

@@ -1,4 +1,5 @@
-import getRandomUser from "../functions/GetRandomUser";
+import Storage from "../../data/Storage";
+import getRandomUser from "../../functions/GetRandomUser";
 
 export const UsersListToolbar = {
   view: "toolbar",
@@ -27,15 +28,13 @@ export const UsersListToolbar = {
       view: "button",
       value: "Sort desc",
       css: "webix_primary",
-      click: () => {
-        $$("list_users").sort("#name#", "desc");
-      },
+      click: () => $$("list_users").sort("#name#", "desc"),
     },
     {
       view: "button",
       value: "Add new",
       css: "webix_primary",
-      click: () => $$("list_users").add(getRandomUser()),
+      click: () => Storage.users.add(getRandomUser()),
     },
   ],
 };

@@ -1,7 +1,7 @@
-import { AppHeader } from "./components/App_Header";
-import { AppSidebar } from "./components/App_Sidebar";
-import { AppMainField } from "./components/App_Main_Field";
-import { AppFooter } from "./components/App_Footer";
+import { AppHeader } from "./components/App/App_Header";
+import { AppSidebar } from "./components/App/App_Sidebar";
+import { AppMainField } from "./components/App/App_Main_Field";
+import { AppFooter } from "./components/App/App_Footer";
 
 export const App = {
   view: "layout",

@@ -1,6 +1,7 @@
+import Storage from "../../data/Storage";
+
 export const DashboardMoviesForm = {
   view: "form",
-  gravity: 1,
   maxWidth: 400,
   margin: 10,
   id: "moviesForm",
@@ -36,6 +37,13 @@ export const DashboardMoviesForm = {
       name: "votes",
       invalidMessage: "0 - 100000",
     },
+    {
+      view: "richselect",
+      id: "richSelectCategories",
+      name: "categoryId",
+      label: "Choose",
+      options: Storage.categories,
+    },
     { maxHeight: 15 },
     {
       margin: 15,
@@ -51,15 +59,12 @@ export const DashboardMoviesForm = {
             if (form.isDirty()) {
               if (!form.validate()) return false;
               form.save();
-              form.clear();
-              table.unselectAll();
               webix.message(`<strong>Movie was successfully saved</strong>`);
             } else {
-              form.clear();
-              form.clearValidation();
-              table.unselectAll();
               webix.message("Nothing was changed");
             }
+            form.clear();
+            table.unselectAll();
           },
         },
         {
@@ -75,6 +80,7 @@ export const DashboardMoviesForm = {
                 const form = $$("moviesForm");
                 form.clear();
                 form.clearValidation();
+                $$("moviesTable").unselectAll();
               }),
         },
       ],
